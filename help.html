@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {font-family: arial; }
+</style>
+<body>
+<H2>GTHcode</H2> 
+Version: 2.0<br>
+<p><a href="index.html">Back to main page</a></p>
+<h3>Get location</h3>
+	Click on the "Get my location" button to get your location and put it on the map with the red marker "M". 
+	The location details are also shown in the boxes at the top of the screen.
+	If using a desktop/laptop device connected to the internet but without GPS, the location may be 
+	approximate, and sometimes wildly incorrect (in spite of the "Accuracy" reported).
+<h3>Copy and Share</h3>
+	The "Copy" button copies the current MemCode to the clipboard, for pasting elsewhere. 
+	The "Share" button copies the current MemCode and invokes the share system to send this to another user.
+<h3>MemCode</h3>
+	Fill in the six boxes with the six 3-letter words that form the MemCode - the program automatically adds the separators, 
+	which do not have to be entered. Click the "...use" button to the right, to convert this a HexCode and to latitude 
+	and longitude. Click the "Put on map" button to show the location on the map, marked with a blue "D".
+	Use "Clear pins" to remove all "D" pins added.
+<h3>HexCode</h3>
+	The box shows the 12-digit hexadecimal code for the currently active location. If you enter a code in the 
+	box and click the "...use" button to the right, this code will be converted to a MemCode and to latitude 
+	and longitude. If fewer that 12 digits are entered they are padded to the right, in order to place the location at 
+	the middle of the larger region specified. If more than 12 digits are entered they are truncated to 12.
+<h3>Latitude and Longitude</h3>
+	The boxes show the calculated latitude and longitude (in degrees) for the currently active location, rounded 
+	to 5 figures. If you enter values here and click the "...use" button to the right, this code will be converted 
+	to a MemCode and HexCode. Latitude must be in the range -90<sup>o</sup> to 90<sup>o</sup>, and longitude in 
+	the range -180<sup>o</sup> to 360<sup>o</sup> (if a longitude greater than 180<sup>o</sup> is entered, then 360<sup>o</sup> 
+	is subtracted to bring it into the preferred range from -180<sup>o</sup> to 180<sup>o</sup>).
+<h3>Map</h3>
+	The BING map may be moved and scaled in the usual way. Click anywhere on the map to show the MemCode for that location, 
+	which is marked on the map with a green "C". The location details are also shown in the boxes at the top of the screen.
+<p><a href="index.html">Back to main page</a></p>
+</body>
+</html>
