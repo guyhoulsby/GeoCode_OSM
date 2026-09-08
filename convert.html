@@ -40,79 +40,16 @@ function reporttype() {
 </script>
 
 <script type='text/javascript'>
-function GetMap() {
-    map = new Microsoft.Maps.Map('#myMap');
-    map.setView({center: new Microsoft.Maps.Location(54.0, -2.0),
-                 zoom: 8 });
-    Microsoft.Maps.Events.addHandler(map, 'click', function(e) // event handler for map click
-		              {console.log('Map clicked');
-		               document.getElementById("out_map_lat").value = e.location.latitude.toFixed(5);		
-	                       document.getElementById("out_map_lon").value = e.location.longitude.toFixed(5);
-                               encode(e.location.latitude, e.location.longitude);
-                               document.getElementById("out_map_hexcode").value = hexcode;
-                               document.getElementById("out_map_memcode").value = code;
-                               try {map.entities.remove(pin);} // delete old pin if it exists
-                               catch {}
-                               pin = new Microsoft.Maps.Pushpin(e.location,  //Create custom Pushpin
-                                                                    {title: code,
-								     color: "green",
-                                                                     text: 'C' } );
-                               map.entities.push(pin); }); //Add the pushpin to the map
-    }
-	
-function test() {
-  memcode = document.getElementById("t1").value + "." +
-            document.getElementById("t2").value + "." +
-            document.getElementById("t3").value + "-" +
-            document.getElementById("t4").value + "." +
-            document.getElementById("t5").value + "." +
-            document.getElementById("t6").value;
-  decode(memcode);
-  try {map.entities.remove(pincode);} // delete old pin if it exists
-  catch {}
-  loc = new Microsoft.Maps.Location(lat, lon)
-  pincode = new Microsoft.Maps.Pushpin(loc,  //Create custom Pushpin
-                                       {title: memcode,
-                                        color: "blue",
-                                        text: 'D' } );
-  map.entities.push(pincode);  //Add the pushpin to the map
-  map.setView({center: loc});
-  document.getElementById("out_mapc_lat").value = lat.toFixed(5);
-  document.getElementById("out_mapc_lon").value = lon.toFixed(5); 
-  } 
-
 function getmemcode() {
   encode(document.getElementById("in_lat").value, document.getElementById("in_lon").value);
+  document.getElementById("out_hex1").value = hexcode;
   document.getElementById("out_mem").value = code; }
 
 function getlatlong() {
   decode(document.getElementById("in_mem").value);
   document.getElementById("out_lat").value  = lat.toFixed(5);
-  document.getElementById("out_lon").value = lon.toFixed(5); }
-
-function getLocation() {
-  if (navigator.geolocation) {navigator.geolocation.getCurrentPosition(putPos, showError);} 
-  else {x.innerHTML = "Geolocation is not supported by this browser.";}
-  }
-function putPos(position) {
-  document.getElementById("out_me_lat").value = position.coords.latitude.toFixed(5);
-  document.getElementById("out_me_lon").value = position.coords.longitude.toFixed(5);
-  encode(position.coords.latitude, position.coords.longitude);
-  document.getElementById("out_me_hexcode").value = hexcode;
-  document.getElementById("out_me_memcode").value = code;
-
-  try {map.entities.remove(pinme);} // delete old pin if it exists
-  catch {}
-  loc = new Microsoft.Maps.Location(document.getElementById("out_me_lat").value, 
-                                    document.getElementById("out_me_lon").value)
-  pinme = new Microsoft.Maps.Pushpin(loc,  //Create custom Pushpin
-                                     {title: code,
-                                      color: "red",
-                                      text: 'M' } );
-  map.entities.push(pinme);  //Add the pushpin to the map
-  map.setView({center: loc,  //Recentre map to me
-               zoom: 10 });
-  }
+  document.getElementById("out_lon").value = lon.toFixed(5); 
+  document.getElementById("out_hex2").value = hexcode; }
 
 const words = ["ace","act","add","age", "aid","aim","air","all",
                "and","ant","ape","arm", "art","ash","ask","ate",
@@ -305,7 +242,7 @@ Version: 2.0
 <p>Convert from MemCode to Lat, Long and <i>vice versa</i>.</p>
 <table style="width:100%">
   <tr>
-    <td style=width:50%><b>MemCode from Lat,Long</b></td>
+    <td style=width:50%><b>MemCode from Lat, Long</b></td>
     <td style=width:50%></td>
   </tr>
   <tr>
@@ -317,6 +254,10 @@ Version: 2.0
     <td><input type="text" id="in_lon" name="in_lon"></td>
   </tr>
   <tr>
+    <td><label for="out_hex1">HexCode:</label></td>
+    <td><input type="text" id="out_hex1" name="out_hex1" disabled></td>
+  </tr>
+  <tr>
     <td><label for="out_mem">MemCode:</label></td>
     <td><input type="text" id="out_mem" name="out_mem" disabled></td>
   </tr>
@@ -324,8 +265,8 @@ Version: 2.0
     <td><button onclick="getmemcode()" class="button button1">Get MemCode</button></td>
   </tr>
   <tr>
+    <td style=width:50%><b>Lat, Long from MemCode</b></td>
     <td style=width:50%></td>
-    <td style=width:50%><b>Lat,Long from MemCode</b></td>
   </tr>
   <tr>
     <td><label for="out_lat">Latitude:</label></td>
@@ -336,11 +277,15 @@ Version: 2.0
     <td><input type="text" id="out_lon" name="out_lon" disabled></td>
   </tr>
   <tr>
+    <td><label for="out_hex2">HexCode:</label></td>
+    <td><input type="text" id="out_hex2" name="out_hex2" disabled></td>
+  </tr>
+  <tr>
     <td style="width:20%"><label for="in_mem">MemCode:</label></td>
     <td style="width:30%"><input type="text" id="in_mem" name="in_mem"></td>
   </tr>
     <td></td>
-    <td><button onclick="getlatlong()" class="button button1">Get Lat,Long</button></td>
+    <td><button onclick="getlatlong()" class="button button1">Get Lat, Long</button></td>
   </tr>
 </table>
 <a href="index.html">Back to main page</a>
