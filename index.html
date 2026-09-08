@@ -34,6 +34,18 @@
                 font-weight: bold;
                 border: 2px solid white;
                 box-shadow: 0 0 3px rgba(0,0,0,0.6); }
+  .me-pin {background-color: #F00000;
+                color: white;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: bold;
+                border: 2px solid white;
+                box-shadow: 0 0 3px rgba(0,0,0,0.6); }
 </style>
 
 <script type='text/javascript'>
@@ -43,6 +55,13 @@ var pin, pincode, pinme;
 function makeIcon(label) { // small labelled circular marker, similar to the old Bing pushpin text
     return L.divIcon({className: '', // avoid Leaflet's default marker-icon class/styling
                        html: '<div class="memcode-pin">' + label + '</div>',
+                       iconSize: [24, 24],
+                       iconAnchor: [12, 12]});
+    }
+
+function makeIconMe(label) { // small labelled circular marker, similar to the old Bing pushpin text
+    return L.divIcon({className: '', // avoid Leaflet's default marker-icon class/styling
+                       html: '<div class="me-pin">' + label + '</div>',
                        iconSize: [24, 24],
                        iconAnchor: [12, 12]});
     }
@@ -109,7 +128,7 @@ function putPos(position) {
   if (pinme) {map.removeLayer(pinme);} // delete old pin if it exists
   loc = [parseFloat(document.getElementById("out_me_lat").value),
          parseFloat(document.getElementById("out_me_long").value)];
-  pinme = L.marker(loc, {icon: makeIcon('M')}) //Create custom pin
+  pinme = L.marker(loc, {icon: makeIconMe('Me')}) //Create custom pin
              .addTo(map)
              .bindTooltip(code);
   map.setView(loc, 10);  //Recentre map to me
