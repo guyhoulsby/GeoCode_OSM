@@ -52,6 +52,16 @@ function getlatlong() {
   document.getElementById("out_lon").value = lon.toFixed(5); 
   document.getElementById("out_hex2").value = hexcode; }
 
+function cleardata() {
+  document.getElementById("in_lat").value  = "";
+  document.getElementById("in_long").value  = "";
+  document.getElementById("in_mem").value  = "";
+  document.getElementById("out_lat").value  = "";
+  document.getElementById("out_lon").value = ""; 
+  document.getElementById("out_hex1").value = ""; 
+  document.getElementById("out_hex2").value = ""; 
+  document.getElementById("out_mem").value = ""; }
+
 const words = ["ace","act","add","age", "aid","aim","air","all",
                "and","ant","ape","arm", "art","ash","ask","ate",
                "bad","bag","bar","bat", "bay","bed","beg","bet",
@@ -263,6 +273,8 @@ function showError(error) {
     <td><button onclick="getmemcode()" class="button button1">Get MemCode</button></td>
   </tr>
   <tr>
+  </tr>
+  <tr>
     <td style=width:50%><b>Lat, Long from MemCode</b></td>
     <td style=width:50%></td>
   </tr>
@@ -284,6 +296,12 @@ function showError(error) {
   </tr>
     <td></td>
     <td><button onclick="getlatlong()" class="button button1">Get Lat, Long</button></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td></td>
+    <td><button onclick="cleardata()" class="button button1">Clear</button></td>
   </tr>
 </table>
 <a href="index.html">Back to main page</a>
