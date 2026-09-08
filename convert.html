@@ -300,36 +300,45 @@ function showError(error) {
 </script>
 
 <body>
-<H2>GTHcode</H2>
-Version: 1.7
-<p>Convert from MemCode to Lat,Long and <i>vice versa</i>.</p>
+<H2>GeoCode</H2>
+Version: 2.0
+<p>Convert from MemCode to Lat, Long and <i>vice versa</i>.</p>
 <table style="width:100%">
   <tr>
     <td style=width:50%><b>MemCode from Lat,Long</b></td>
-    <td style=width:50%><b>Lat,Long from MemCode</b></td>
+    <td style=width:50%></td>
   </tr>
-</table>
-<table style="width:100%">
   <tr>
     <td style="width:20%"><label for="in_lat">Latitude:</label></td>
     <td style="width:30%"><input type="text" id="in_lat" name="in_lat"></td>
-    <td><label for="out_lat">Latitude:</label></td>
-    <td><input type="text" id="out_lat" name="out_lat" disabled></td>
   </tr>
   <tr>
     <td><label for="in_lon">Longitude:</label></td>
     <td><input type="text" id="in_lon" name="in_lon"></td>
-    <td><label for="out_lon">Longitude:</label></td>
-    <td><input type="text" id="out_lon" name="out_lon" disabled></td>
   </tr>
   <tr>
     <td><label for="out_mem">MemCode:</label></td>
     <td><input type="text" id="out_mem" name="out_mem" disabled></td>
-    <td style="width:20%"><label for="in_mem">MemCode:</label></td>
-    <td style="width:30%"><input type="text" id="in_mem" name="in_mem"></td>
   </tr>
     <td></td>
     <td><button onclick="getmemcode()" class="button button1">Get MemCode</button></td>
+  </tr>
+  <tr>
+    <td style=width:50%></td>
+    <td style=width:50%><b>Lat,Long from MemCode</b></td>
+  </tr>
+  <tr>
+    <td><label for="out_lat">Latitude:</label></td>
+    <td><input type="text" id="out_lat" name="out_lat" disabled></td>
+  </tr>
+  <tr>
+    <td><label for="out_lon">Longitude:</label></td>
+    <td><input type="text" id="out_lon" name="out_lon" disabled></td>
+  </tr>
+  <tr>
+    <td style="width:20%"><label for="in_mem">MemCode:</label></td>
+    <td style="width:30%"><input type="text" id="in_mem" name="in_mem"></td>
+  </tr>
     <td></td>
     <td><button onclick="getlatlong()" class="button button1">Get Lat,Long</button></td>
   </tr>
